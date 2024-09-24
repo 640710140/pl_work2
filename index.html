@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP Concepts and Code Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        pre {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        .code-section {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>OOP Concepts and Code Examples</h1>
+
+    <h2>1. Code Examples</h2>
+
+    <div class="code-section">
+        <h3>Java Code:</h3>
+        <pre>
+class Animal {
+    Animal() {
+        System.out.println("create animal");
+    }
+
+    void sound() {
+        System.out.println("animal makes a sound");
+    }
+
+    protected void finalize() {
+        System.out.println("delete animal");
+    }
+}
+
+class Dog extends Animal {
+    Dog() {
+        System.out.println("dog");
+    }
+
+    @Override
+    void sound() {
+        System.out.println("dog barks");
+    }
+
+    protected void finalize() {
+        System.out.println("delete dog");
+    }
+}
+
+class Cat extends Animal {
+    Cat() {
+        System.out.println("cat");
+    }
+
+    @Override
+    void sound() {
+        System.out.println("cat meows");
+    }
+
+    protected void finalize() {
+        System.out.println("delete cat");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a = new Animal();
+        Dog d = new Dog();
+        Cat c = new Cat();
+
+        a.sound();
+        d.sound();
+        c.sound();
+    }
+}
+        </pre>
+
+        <h4>Java Output:</h4>
+        <pre>
+create animal
+dog
+cat
+animal makes a sound
+dog barks
+cat meows
+        </pre>
+    </div>
+
+    <div class="code-section">
+        <h3>C++ Code:</h3>
+        <pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+class Animal {
+public:
+    Animal() {
+        cout &lt;&lt; "create animal" &lt;&lt; endl;
+    }
+
+    virtual void sound() {
+        cout &lt;&lt; "animal makes a sound" &lt;&lt; endl;
+    }
+
+    virtual ~Animal() {
+        cout &lt;&lt; "delete animal" &lt;&lt; endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    Dog() {
+        cout &lt;&lt; "dog" &lt;&lt; endl;
+    }
+
+    void sound() override {
+        cout &lt;&lt; "dog barks" &lt;&lt; endl;
+    }
+
+    ~Dog() {
+        cout &lt;&lt; "delete dog" &lt;&lt; endl;
+    }
+};
+
+class Cat : public Animal {
+public:
+    Cat() {
+        cout &lt;&lt; "cat" &lt;&lt; endl;
+    }
+
+    void sound() override {
+        cout &lt;&lt; "cat meows" &lt;&lt; endl;
+    }
+
+    ~Cat() {
+        cout &lt;&lt; "delete cat" &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Animal* a = new Animal();
+    Animal* d = new Dog();
+    Animal* c = new Cat();
+
+    a-&gt;sound();
+    d-&gt;sound();
+    c-&gt;sound();
+
+    delete a;
+    delete d;
+    delete c;
+
+    return 0;
+}
+        </pre>
+
+        <h4>C++ Output:</h4>
+        <pre>
+create animal
+dog
+cat
+animal makes a sound
+dog barks
+cat meows
+delete animal
+delete dog
+delete cat
+        </pre>
+    </div>
+
+    <div class="code-section">
+        <h3>Python Code:</h3>
+        <pre>
+class Animal:
+    def __init__(self):
+        print("create animal")
+
+    def sound(self):
+        print("animal makes a sound")
+
+    def __del__(self):
+        print("delete animal")
+
+class Dog(Animal):
+    def __init__(self):
+        print("dog")
+
+    def sound(self):
+        print("dog barks")
+
+    def __del__(self):
+        print("delete dog")
+
+class Cat(Animal):
+    def __init__(self):
+        print("cat")
+
+    def sound(self):
+        print("cat meows")
+
+    def __del__(self):
+        print("delete cat")
+
+if __name__ == "__main__":
+    a = Animal()
+    d = Dog()
+    c = Cat()
+
+    a.sound()
+    d.sound()
+    c.sound()
+        </pre>
+
+        <h4>Python Output:</h4>
+        <pre>
+create animal
+dog
+cat
+animal makes a sound
+dog barks
+cat meows
+delete animal
+delete dog
+delete cat
+        </pre>
+    </div>
+
+    <h2>2. OOP Concepts</h2>
+    <div class="code-section">
+        <h3>Class</h3>
+        <p>ในแต่ละโปรแกรม คลาส <strong>Animal</strong>, <strong>Dog</strong>, และ <strong>Cat</strong> ถูกสร้างขึ้นเพื่อแสดงความเป็นกลุ่มของวัตถุ (objects) ที่มีคุณสมบัติและพฤติกรรม เช่น method <code>sound()</code>.</p>
+    </div>
+
+    <div class="code-section">
+        <h3>Object, Instance</h3>
+        <p>Object (instance) ของคลาสจะถูกสร้างเมื่อเราเรียก constructor เช่น <code>a = Animal()</code>, <code>d = Dog()</code>, <code>c = Cat()</code>. แต่ละ object จะมีพฤติกรรมและคุณสมบัติที่เฉพาะเจาะจงตาม class ของมัน.</p>
+    </div>
+
+    <div class="code-section">
+        <h3>Subclass, Derived Class</h3>
+        <p>คลาส <strong>Dog</strong> และ <strong>Cat</strong> เป็น subclass ของ <strong>Animal</strong>, พวกมันสืบทอดคุณสมบัติและพฤติกรรมจาก <strong>Animal</strong> แต่สามารถ override เมธอดของตัวเองได้.</p>
+    </div>
+
+    <div class="code-section">
+        <h3>Message</h3>
+        <p>การเรียก method เช่น <code>a.sound()</code> คือการส่งข้อความไปยัง object <strong>a</strong> ให้ทำงานในลักษณะตามที่กำหนดไว้ใน method <strong>sound()</strong>.</p>
+    </div>
+
+    <div class="code-section">
+        <h3>Inheritance</h3>
+        <p><strong>Dog</strong> และ <strong>Cat</strong> สืบทอดคุณสมบัติและพฤติกรรมจาก <strong>Animal</strong> และสามารถเพิ่มเติมหรือปรับปรุงพฤติกรรมใหม่ได้.</p>
+    </div>
+
+    <div class="code-section">
+        <h3>Polymorphism</h3>
+        <p>Method <strong>sound()</strong> ถูก override ในคลาสลูก (<strong>Dog</strong>, <strong>Cat</strong>) แสดงถึง polymorphism ทำให้สามารถเรียก method เดียวกันแต่ได้ผลลัพธ์ที่ต่างกันในแต่ละ subclass.</p>
+    </div>
+
+    <div class="code-section">
+        <h3>3. Abstract Class</h3>
+        <p><strong>Abstract Class</strong> คือคลาสที่ไม่สามารถสร้าง object ได้โดยตรง และมักใช้เป็น blueprint สำหรับ subclass เพื่อให้มีการสืบทอดและ override method ที่จำเป็น.</p>
+        <p>ในตัวอย่างนี้ ไม่มี abstract class แต่ถ้าเราต้องการให้ <strong>Animal</strong> เป็น abstract class เราจะทำให้ method <code>sound()</code> เป็น abstract method ที่ต้องถูก override ใน subclass.</p>
+        <h4>Python Example:</h4>
+        <pre>
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    @abstractmethod
+    def sound(self):
+        pass
+
+class Dog(Animal):
+    def sound(self):
+        print("dog barks")
+
+class Cat(Animal):
+    def sound(self):
+        print("cat meows")
+        </pre>
+    </div>
+
+</body>
+</html>
